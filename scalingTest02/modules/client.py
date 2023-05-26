@@ -139,7 +139,7 @@ class Client(simulation_pb2_grpc.InferenceServicer):
                     self.backend_list.pop(0)
                     self.frontend_list.pop(0)
                     self.adj_times.pop(0)
-                    #self.adj_worker_times.pop(0)
+                    self.adj_worker_times.pop(0)
                 self.print_statistics()
                 self.latencies = self.latencies[int(split):]
 

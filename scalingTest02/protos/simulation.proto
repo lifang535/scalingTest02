@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package simulation;
+
+service Inference {
+    rpc SendRequest (Request) returns (Response) {}
+    rpc ProcessBatch (Batch) returns (BatchResponse) {}
+}
+
+message Request {
+    int64 message_type = 1;
+    int64 id = 2;
+    int64 data_time = 3;
+    int64 num_workers = 4;
+    bool worker_status = 5;
+    int64 adj_worker_time = 6;
+    //repeated Request requests = 7;
+}
+
+message Response {
+    //int64 id = 1;
+    //repeated int64 end_times = 2;
+    //repeated int64 adj_worker_times = 3;
+}
+
+message Batch {
+    repeated Request requests = 1;
+    bool control = 2;
+}
+
+message BatchResponse {
+    repeated int64 end_times = 1;
+    repeated int64 adj_worker_times = 2;
+}
+
+// python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. simulation.proto

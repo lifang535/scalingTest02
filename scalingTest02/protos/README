@@ -1,0 +1,8 @@
+message_type:
+1 - Client sends request to the Frontend
+2 - Frontend sends batch to the Worker (needs the response) ? -> rpc ProcessBatch
+3 - Worker sends status to the Frontend
+4 - Frontend sends end_time and adj_worker_time to the Client
+5 - Frontend sends num_workers to the Client
+6 - Client sends end_signal to the Frontend
+7 - Frontend sends end_signal to the Worker
